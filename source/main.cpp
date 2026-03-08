@@ -1,6 +1,6 @@
 #include "command_line_parser.h"
 #include "file_manager.h"
-#include "selection_sorting_algorithm.h"
+#include "dispatch_sorting_algorithm.h"
 #include "data_generator.h"
 
 #include <iostream>
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
             {
                 read_file(config.inputFile, data);
                 config.inputSize = data.dataSize;
-                SortResult result = selection_sorting_algorithm(config.algorithm1, data);
+                SortResult result = dispatch_sorting_algorithm(config.algorithm1, data);
                 write_file("output.txt", data);
                 write_console_1(config, result);
             }
@@ -25,8 +25,8 @@ int main(int argc, char *argv[])
             {
                 data.dataSize = config.inputSize;
                 GenerateData(data.element, data.dataSize, config.inputOrder);
-                // write_file("input.txt", data);
-                SortResult result = selection_sorting_algorithm(config.algorithm1, data);
+                write_file("input.txt", data);
+                SortResult result = dispatch_sorting_algorithm(config.algorithm1, data);
                 write_console_2(config, result);
                 write_file("output.txt", data);
             }
@@ -36,19 +36,19 @@ int main(int argc, char *argv[])
 
                 GenerateData(data.element, data.dataSize, "-rand");
                 write_file("input_1.txt", data);
-                SortResult result1 = selection_sorting_algorithm(config.algorithm1, data);
+                SortResult result1 = dispatch_sorting_algorithm(config.algorithm1, data);
 
                 GenerateData(data.element, data.dataSize, "-nsorted");
                 write_file("input_2.txt", data);
-                SortResult result2 = selection_sorting_algorithm(config.algorithm1, data);   
+                SortResult result2 = dispatch_sorting_algorithm(config.algorithm1, data);   
 
                 GenerateData(data.element, data.dataSize, "-sorted");
                 write_file("input_3.txt", data);
-                SortResult result3 = selection_sorting_algorithm(config.algorithm1, data);   
+                SortResult result3 = dispatch_sorting_algorithm(config.algorithm1, data);   
 
                 GenerateData(data.element, data.dataSize, "-rev");
                 write_file("input_4.txt", data);
-                SortResult result4 = selection_sorting_algorithm(config.algorithm1, data); 
+                SortResult result4 = dispatch_sorting_algorithm(config.algorithm1, data); 
 
                 write_console_3(config, result1, result2, result3, result4);               
             }
@@ -59,8 +59,9 @@ int main(int argc, char *argv[])
             {
                 read_file(config.inputFile, data);
                 config.inputSize = data.dataSize;
-                SortResult result1 = selection_sorting_algorithm(config.algorithm1, data);  
-                SortResult result2 = selection_sorting_algorithm(config.algorithm2, data);  
+                ArrayData dataCoppy = data;
+                SortResult result1 = dispatch_sorting_algorithm(config.algorithm1, data);  
+                SortResult result2 = dispatch_sorting_algorithm(config.algorithm2, dataCoppy);  
                 write_console_4(config, result1, result2);
             }
             else if (config.commandType == 5)
@@ -68,8 +69,9 @@ int main(int argc, char *argv[])
                 data.dataSize = config.inputSize;
                 GenerateData(data.element, data.dataSize, config.inputOrder);
                 write_file("input.txt", data);
-                SortResult result1 = selection_sorting_algorithm(config.algorithm1, data);  
-                SortResult result2 = selection_sorting_algorithm(config.algorithm2, data);
+                ArrayData dataCoppy = data;
+                SortResult result1 = dispatch_sorting_algorithm(config.algorithm1, data);  
+                SortResult result2 = dispatch_sorting_algorithm(config.algorithm2, dataCoppy);
                 write_console_5(config, result1, result2);
             }
         }

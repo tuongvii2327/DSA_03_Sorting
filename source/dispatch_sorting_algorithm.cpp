@@ -1,8 +1,8 @@
 #include "utilities.h"
-#include "selection_sorting_algorithm.h"
+#include "dispatch_sorting_algorithm.h"
 #include "quick_sort.h"
 
-SortResult selection_sorting_algorithm(std::string algorithm, ArrayData &data)
+SortResult dispatch_sorting_algorithm(std::string algorithm, ArrayData &data)
 {
 
     SortResult result;
