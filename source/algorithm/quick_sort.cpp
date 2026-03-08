@@ -1,6 +1,7 @@
 #include "quick_sort.h"
 #include <chrono>
 #include <algorithm>
+#include <vector>
 
 int partition(std::vector<int> &a, int left, int right, long long &count_compare) 
 {
@@ -8,12 +9,20 @@ int partition(std::vector<int> &a, int left, int right, long long &count_compare
     int i = left;
     int j = right;
 
-    while (++count_compare && i <= j) 
+    while (i <= j) 
     {
-        while (++count_compare && a[i] < pivot) ++i;
-        while (++count_compare && a[j] > pivot) --j;
+        while (++count_compare && a[i] < pivot) 
+        {
+            ++i;
+        }
         
-        if (++count_compare && i <= j) {
+        while (++count_compare && a[j] > pivot) 
+        {
+            --j;
+        }
+        
+        if (i <= j) 
+        {
             std::swap(a[i], a[j]);
             i++;
             j--;
@@ -24,7 +33,10 @@ int partition(std::vector<int> &a, int left, int right, long long &count_compare
 
 void perform_quick_sort(std::vector<int> &a, int left, int right, long long &count_compare) 
 {
-    if (++count_compare && left >= right) return;
+    if (left >= right) 
+    {
+        return;
+    }
 
     int index = partition(a, left, right, count_compare);
     
