@@ -3,6 +3,11 @@
 #include "quick_sort.h"
 #include "shaker_sort.h"
 
+#include "selection_sort.h"
+#include "bubble_sort.h"
+#include "shell_sort.h"
+#include "heap_sort.h"
+
 SortResult dispatch_sorting_algorithm(std::string algorithm, ArrayData &data)
 {
 
@@ -16,7 +21,24 @@ SortResult dispatch_sorting_algorithm(std::string algorithm, ArrayData &data)
     {
         result = shaker_sort(data);
     }
-    //continue else if....
+
+    //TuongVi
+    else if (algorithm == "selection-sort")
+    {
+        result = selection_sort(data);
+    }
+    else if (algorithm == "bubble-sort")
+    {
+        result = bubble_sort(data);
+    }
+    else if (algorithm == "shell-sort")
+    {
+        result = shell_sort(data);
+    }
+    else if (algorithm == "heap-sort")
+    {
+        result = heap_sort(data);
+    }
 
     return result;
 }
