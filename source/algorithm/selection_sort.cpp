@@ -5,10 +5,10 @@ using namespace std;
 
 void perform_selection_sort(vector<int> &a, int size, long long &comparisons)
 {
-    for (int i = 0; i < size - 1; i++)
+    for (int i = 0; comparisons++ && i < size - 1; i++)
     {
         int idSmall = i;
-        for (int j = i + 1; j < size; j++)
+        for (int j = i + 1; comparisons++ && j < size; j++)
         {
             comparisons++;
             if (a[j] < a[idSmall]) idSmall = j;

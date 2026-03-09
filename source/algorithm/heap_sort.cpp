@@ -20,11 +20,11 @@ void heapify(vector<int>& a, int size, int id, long long& comparisons)
 
 void perform_heap_sort(vector<int>& a, int size, long long& comparisons)
 {
-    for (int i = size / 2 - 1; i >= 0; i--)
+    for (int i = size / 2 - 1; comparisons++ && i >= 0; i--)
     {
         heapify(a, size, i, comparisons);
     }
-    for (int j = size - 1; j > 0; j--)
+    for (int j = size - 1; comparisons++ && j > 0; j--)
     {
         swap(a[0], a[j]);
         heapify(a, j, 0, comparisons);

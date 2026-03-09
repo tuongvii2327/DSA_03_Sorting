@@ -5,13 +5,13 @@ using namespace std;
 
 void perform_shell_sort(vector<int>& a, int size, long long& comparisons)
 {
-    for (int gap = size / 2; gap > 0; gap /= 2)
+    for (int gap = size / 2; comparisons++ && gap > 0; gap /= 2)
     {
-        for (int i = gap; i < size; i++)
+        for (int i = gap; comparisons++ && i < size; i++)
         {
             int j = i,
                 temp = a[j];
-            while (j >= gap && a[j - gap] > temp)
+            while (j >= gap && a[j - gap] > temp && comparisons++ && comparisons++)
             {
                 a[j] = a[j - gap];
                 j -= gap;
