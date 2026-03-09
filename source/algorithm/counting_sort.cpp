@@ -1,46 +1,51 @@
-#include "binary_insertion_sort.h"
+#include "counting_sort.h"
 #include <chrono>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
 
-void perform_binary_insertion_sort(std::vector<int> &a, int n, long long &count_compare) 
+void perform_counting_sort(std::vector<int> &a, int n, long long &count_compare) 
 {
+    int max_val = a[0];
+    int min_val = a[0];
+
     for (int i = 1; i < n; i++) 
     {
-        int x = a[i];
-        int left = 0;
-        int right = i - 1;
-
-        while (left <= right) 
+        if (++count_compare && a[i] > max_val) 
         {
-            int mid = left + (right - left) / 2;
-            
-            if (++count_compare && x < a[mid]) 
-            {
-                right = mid - 1;
-            } 
-            else 
-            {
-                left = mid + 1;
-            }
+            max_val = a[i];
         }
-
-        for (int j = i - 1; j >= left; j--) 
+        if (++count_compare && a[i] < min_val) 
         {
-            a[j + 1] = a[j];
+            min_val = a[i];
         }
-        
-        a[left] = x;
+    }
+
+    int range = max_val - min_val + 1;
+    std::vector<int> count(range, 0);
+
+    for (int i = 0; i < n; i++) 
+    {
+        count[a[i] - min_val]++;
+    }
+
+    int index = 0;
+    for (int i = 0; i < range; i++) 
+    {
+        while (count[i] > 0) 
+        {
+            a[index++] = i + min_val;
+            count[i]--;
+        }
     }
 }
 
-SortResult binary_insertion_sort(ArrayData &data) 
+SortResult counting_sort(ArrayData &data) 
 {
     SortResult res = {0.0, 0LL};
     
     auto start = std::chrono::high_resolution_clock::now();
 
-    perform_binary_insertion_sort(data.element, data.dataSize, res.comparisons);
+    perform_counting_sort(data.element, data.dataSize, res.comparisons);
 
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> duration = end - start;
