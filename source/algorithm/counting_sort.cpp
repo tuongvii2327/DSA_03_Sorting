@@ -10,11 +10,12 @@ void perform_counting_sort(std::vector<int> &a, int n, long long &count_compare)
 
     for (int i = 1; i < n; i++) 
     {
-        if (++count_compare && a[i] > max_val) 
+        count_compare += 2;
+        if (a[i] > max_val) 
         {
             max_val = a[i];
         }
-        if (++count_compare && a[i] < min_val) 
+        if (a[i] < min_val) 
         {
             min_val = a[i];
         }

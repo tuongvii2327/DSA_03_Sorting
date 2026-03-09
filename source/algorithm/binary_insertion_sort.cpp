@@ -14,8 +14,8 @@ void perform_binary_insertion_sort(std::vector<int> &a, int n, long long &count_
         while (left <= right) 
         {
             int mid = left + (right - left) / 2;
-            
-            if (++count_compare && x < a[mid]) 
+            ++count_compare;
+            if (x < a[mid]) 
             {
                 right = mid - 1;
             } 
