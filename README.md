@@ -1,6 +1,7 @@
 # DSA-Sorting-Project
 ## 1. Mở github codespace trong branch test
 ## 2. Mở terminal (Ctrl + `) và chạy dòng lệnh bên dưới để biên dịch
+> cd source
 > g++ *.cpp -std=c++17 -o 03 (03 là tên nhóm)
 ## 3. Nên dùng command 2 (với kích thước lớn) hoặc command 3 (với kích thước nhỏ) để chạy
 Ví dụ:
