@@ -3,9 +3,10 @@
 
 #include "utilities.h"
 
-void perform_shell_sort(std::vector<int>& a, int size, long long& comparisons);
+void perform_shell_sort(std::vector<int> a, int size, long long &comparisons);
 
-SortResult shell_sort(ArrayData& data);
+void perform_shell_sort(std::vector<int> &a, int size);
+
+SortResult shell_sort(ArrayData &data);
 
 #endif
-
