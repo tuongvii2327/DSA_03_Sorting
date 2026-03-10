@@ -12,7 +12,7 @@ void read_file(const std::string &fileName, ArrayData &data)
     {
         throw std::runtime_error(fileName + " not found!");
     }
-    
+
     inputFile >> data.dataSize;
     data.element.resize(data.dataSize);
     for (int i = 0; i < data.dataSize; ++i)
@@ -23,7 +23,6 @@ void read_file(const std::string &fileName, ArrayData &data)
     inputFile.close();
 }
 
-
 void write_file(const std::string &fileName, const ArrayData &data)
 {
     std::ofstream outFile(fileName);
@@ -33,9 +32,9 @@ void write_file(const std::string &fileName, const ArrayData &data)
     }
 
     outFile << data.dataSize << "\n";
-    for (const int &num: data.element)
+    for (const int &num : data.element)
     {
-        outFile << num << ' '; 
+        outFile << num << ' ';
     }
 
     outFile.close();
@@ -73,8 +72,8 @@ void write_console_2(const Config &config, const SortResult &result)
     if (config.outputParameter == "-comp" || config.outputParameter == "-both")
     {
         std::cout << "Comparisons: " << result.comparisons << '\n';
-    } 
-    std::cout << '\n'; 
+    }
+    std::cout << '\n';
 }
 
 void write_console_3(const Config &config, const SortResult &result1, const SortResult &result2, const SortResult &result3, const SortResult &result4)
@@ -94,6 +93,7 @@ void write_console_3(const Config &config, const SortResult &result1, const Sort
     {
         std::cout << "Comparisons: " << result1.comparisons << '\n';
     }
+    std::cout << '\n';
 
     std::cout << "Input order: Nearly Sorted" << '\n';
     std::cout << "-------------------------" << '\n';
@@ -105,6 +105,7 @@ void write_console_3(const Config &config, const SortResult &result1, const Sort
     {
         std::cout << "Comparisons: " << result2.comparisons << '\n';
     }
+    std::cout << '\n';
 
     std::cout << "Input order: Sorted" << '\n';
     std::cout << "-------------------------" << '\n';
@@ -116,6 +117,7 @@ void write_console_3(const Config &config, const SortResult &result1, const Sort
     {
         std::cout << "Comparisons: " << result3.comparisons << '\n';
     }
+    std::cout << '\n';
 
     std::cout << "Input order: Reversed" << '\n';
     std::cout << "-------------------------" << '\n';
@@ -134,8 +136,8 @@ void write_console_4(const Config &config, const SortResult &result1, const Sort
 {
     std::cout << "COMPARE MODE\n";
     std::cout << "Algorithm: " << config.algorithm1 << " | " << config.algorithm2 << '\n';
-    std::cout << "Input file: " << config.inputFile << '\n';    
-    std::cout << "Input size: " << config.inputSize << '\n';    
+    std::cout << "Input file: " << config.inputFile << '\n';
+    std::cout << "Input size: " << config.inputSize << '\n';
     std::cout << "-------------------------" << '\n';
     std::cout << std::fixed << std::setprecision(2);
     std::cout << "Running time: " << result1.runTime << " ms | " << result2.runTime << " ms\n";
@@ -147,8 +149,8 @@ void write_console_5(const Config &config, const SortResult &result1, const Sort
 {
     std::cout << "COMPARE MODE\n";
     std::cout << "Algorithm: " << config.algorithm1 << " | " << config.algorithm2 << '\n';
-    std::cout << "Input size: " << config.inputSize << '\n';    
-    std::cout << "Input order: " << config.inputOrder << '\n';    
+    std::cout << "Input size: " << config.inputSize << '\n';
+    std::cout << "Input order: " << config.inputOrder << '\n';
     std::cout << "-------------------------" << '\n';
     std::cout << std::fixed << std::setprecision(2);
     std::cout << "Running time: " << result1.runTime << " ms | " << result2.runTime << " ms\n";
