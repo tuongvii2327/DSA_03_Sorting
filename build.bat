@@ -4,7 +4,7 @@ SETLOCAL EnableDelayedExpansion
 :: 1. Cấu hình tên file đầu ra và trình biên dịch
 set OUTPUT=groupid.exe
 set COMPILER=g++
-set FLAGS=-O3 -Iinclude -Iinclude/algorithm
+set FLAGS=-O3 -Iinclude -Iinclude/algorithm -static
 
 :: 2. Thu thập tất cả các file .cpp từ thư mục source và các thư mục con
 set SOURCES=source/*.cpp source/algorithm/*.cpp
