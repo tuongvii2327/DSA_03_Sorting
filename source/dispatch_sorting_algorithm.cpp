@@ -1,5 +1,10 @@
 #include "utilities.h"
 #include "dispatch_sorting_algorithm.h"
+
+#include "selection_sort.h"
+#include "bubble_sort.h"
+#include "shell_sort.h"
+#include "heap_sort.h"
 #include "insertion_sort.h"
 #include "merge_sort.h"
 #include "radix_sort.h"
@@ -14,8 +19,16 @@ SortResult dispatch_sorting_algorithm(std::string algorithm, ArrayData &data)
 
     SortResult result;
 
-    //continue else if....
-    if (algorithm == "insertion-sort")
+    // TuongVi
+    if (algorithm == "selection-sort")
+    {
+        result = selection_sort(data);
+    }
+    else if (algorithm == "bubble-sort")
+    {
+        result = bubble_sort(data);
+    }
+    else if (algorithm == "insertion-sort")
     {
         result = insertion_sort(data);
     }
@@ -39,15 +52,13 @@ SortResult dispatch_sorting_algorithm(std::string algorithm, ArrayData &data)
     {
         result = binary_insertion_sort(data);
     }
-    else if (algorithm == "counting-sort")
+    else if (algorithm == "shell-sort")
     {
-        result = counting_sort(data);
+        result = shell_sort(data);
     }
-    else if (algorithm == "binary-insertion-sort")
+    else if (algorithm == "heap-sort")
     {
-        result = binary_insertion_sort(data);
+        result = heap_sort(data);
     }
-    //continue else if....
-
     return result;
 }
