@@ -16,52 +16,20 @@
 
 SortResult dispatch_sorting_algorithm(std::string algorithm, ArrayData &data)
 {
-
     SortResult result;
 
-    // TuongVi
-    if (algorithm == "selection-sort")
-    // TuongVi
-    if (algorithm == "selection-sort")
-    {
-        result = selection_sort(data);
-        result = selection_sort(data);
-    }
-    else if (algorithm == "bubble-sort")
-    {
-        result = bubble_sort(data);
-    }
-    else if (algorithm == "insertion-sort")
-    {
-        result = insertion_sort(data);
-    }
-    else if (algorithm == "merge-sort") 
-    {
-        result = merge_sort(data);
-    }
-    else if (algorithm == "radix-sort") 
-    {
-        result = radix_sort(data);
-    }
-    else if (algorithm == "flash-sort") 
-    {
-        result = flash_sort(data);
-    }
-    else if (algorithm == "shell-sort")
-    {
-        result = shell_sort(data);
-    }
-    else if (algorithm == "heap-sort")
-    {
-        result = heap_sort(data);
-    }
-    else if (algorithm == "shell-sort")
-    {
-        result = shell_sort(data);
-    }
-    else if (algorithm == "heap-sort")
-    {
-        result = heap_sort(data);
-    }
+    if (algorithm == "selection-sort") result = selection_sort(data);
+    else if (algorithm == "bubble-sort") result = bubble_sort(data);
+    else if (algorithm == "insertion-sort") result = insertion_sort(data);
+    else if (algorithm == "merge-sort") result = merge_sort(data);
+    else if (algorithm == "radix-sort") result = radix_sort(data);
+    else if (algorithm == "flash-sort") result = flash_sort(data);
+    else if (algorithm == "shell-sort") result = shell_sort(data);
+    else if (algorithm == "heap-sort") result = heap_sort(data);
+    else if (algorithm == "quick-sort") result = quick_sort(data);
+    else if (algorithm == "shaker-sort") result = shaker_sort(data);
+    else if (algorithm == "counting-sort") result = counting_sort(data);
+    else if (algorithm == "binary-insertion-sort") result = binary_insertion_sort(data);
+
     return result;
 }
