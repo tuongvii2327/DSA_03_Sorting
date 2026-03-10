@@ -21,7 +21,10 @@ SortResult dispatch_sorting_algorithm(std::string algorithm, ArrayData &data)
 
     // TuongVi
     if (algorithm == "selection-sort")
+    // TuongVi
+    if (algorithm == "selection-sort")
     {
+        result = selection_sort(data);
         result = selection_sort(data);
     }
     else if (algorithm == "bubble-sort")
@@ -44,13 +47,13 @@ SortResult dispatch_sorting_algorithm(std::string algorithm, ArrayData &data)
     {
         result = flash_sort(data);
     }
-    else if (algorithm == "counting-sort")
+    else if (algorithm == "shell-sort")
     {
-        result = counting_sort(data);
+        result = shell_sort(data);
     }
-    else if (algorithm == "binary-insertion-sort")
+    else if (algorithm == "heap-sort")
     {
-        result = binary_insertion_sort(data);
+        result = heap_sort(data);
     }
     else if (algorithm == "shell-sort")
     {
