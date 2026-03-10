@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void heapify(vector<int> a, int size, int id, long long &comparisons)
+void heapify(vector<int> &a, int size, int id, long long &comparisons)
 {
     comparisons += 3;
     int biggest = id,
