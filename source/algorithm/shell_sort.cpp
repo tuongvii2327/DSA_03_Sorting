@@ -5,7 +5,12 @@ using namespace std;
 
 void perform_shell_sort(vector<int> a, int size, long long &comparisons)
 {
-    for (int gap = size / 2; ++comparisons && gap > 0; gap /= 2)
+    int gap = 1;
+    while (gap < size / 3 && ++comparisons)
+    {
+        gap = 3 * gap + 1;
+    }
+    while (gap >= 1 && ++comparisons)
     {
         for (int i = gap; ++comparisons && i < size; i++)
         {
@@ -18,12 +23,18 @@ void perform_shell_sort(vector<int> a, int size, long long &comparisons)
             }
             a[j] = temp;
         }
+        gap /= 3;
     }
 }
 
 void perform_shell_sort(vector<int> &a, int size)
 {
-    for (int gap = size / 2; gap > 0; gap /= 2)
+    int gap = 1;
+    while (gap < size / 3)
+    {
+        gap = 3 * gap + 1;
+    }
+    while (gap >= 1)
     {
         for (int i = gap; i < size; i++)
         {
@@ -36,6 +47,7 @@ void perform_shell_sort(vector<int> &a, int size)
             }
             a[j] = temp;
         }
+        gap /= 3;
     }
 }
 
